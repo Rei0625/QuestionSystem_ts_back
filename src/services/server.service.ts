@@ -48,7 +48,6 @@ app.use(cookieParser());
 // ルーティングの設定
 app.use("/api", Routes);
 
-// Angularのビルド成果物があるディレクトリを指定（例: dist/QuestionSystem_ts_front）
 const angularDistPath = path.join(
   __dirname,
   "dist",

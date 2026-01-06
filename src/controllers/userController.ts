@@ -28,7 +28,6 @@ export const fetchUsers = async (req: Request, res: Response) => {
 };
 
 export const login = async (req: Request, res: Response): Promise<void> => {
-  console.log(req.body);
   const { user_name, password } = req.body;
 
   try {
@@ -85,7 +84,6 @@ export const createdUser = async (req: Request, res: Response) => {
         hashedPassword
       );
 
-      console.log("✅ ユーザー作成成功:", result);
       res.status(200).json({ message: "✅ ユーザー作成成功" });
     } catch (error) {
       console.log(error);
@@ -115,7 +113,6 @@ export const createdUsers = async (req: Request, res: Response) => {
           hashedPassword
         );
 
-        console.log("✅ ユーザー作成成功:", result);
         results.push({
           user_name: user.user_name,
           message: "✅ ユーザー作成成功",
@@ -136,7 +133,6 @@ export const deletedUser = async (req: Request, res: Response) => {
   const { user_id } = req.body;
   try {
     const result = await deleteUser(user_id);
-    console.log(result);
     res.status(200).json({ message: "ユーザー削除を行いました" });
   } catch (erroe) {
     console.log(erroe);

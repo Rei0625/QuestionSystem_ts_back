@@ -25,7 +25,6 @@ export const getExamQuestions = async (req: Request, res: Response) => {
     }
     const redis = new RedisService();
     const user_quest = new UserQuestionService(redis);
-    console.log(JSON.stringify(examgroups));
     const test = await user_quest.storeQuestionData(examgroups, user_id);
     res.status(200).json({ result: test });
   } catch (err) {
@@ -34,7 +33,6 @@ export const getExamQuestions = async (req: Request, res: Response) => {
 };
 
 export const getFieldQuestions = async (req: Request, res: Response) => {
-  console.log(req.body);
   const { field, field_select, user_id } = req.body;
   const examgroups: ExamGroup[] = [];
   const categorys: Category[] = [];
@@ -48,7 +46,6 @@ export const getFieldQuestions = async (req: Request, res: Response) => {
       const examgroup: ExamGroup = await selectExamGroup(exam_id);
       examgroup.categorys = [];
       for (const category of categorys) {
-        console.log(category);
         if (category.category_examgroup_id == examgroup.examgroup_id) {
           examgroup.categorys.push(category);
         }

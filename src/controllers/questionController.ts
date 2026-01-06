@@ -45,7 +45,6 @@ export const createdRadioButtonQuestion = async (
   req: Request,
   res: Response
 ) => {
-  console.log(req.body);
   const {
     question_category_id,
     question_memo,
@@ -56,7 +55,6 @@ export const createdRadioButtonQuestion = async (
   } = req.body;
   try {
     const question_oprion_json = JSON.stringify(question_option);
-    console.log(question_radio_answer);
     const result = await createRadioButtonQuestion(
       question_category_id,
       question_memo,
@@ -65,8 +63,6 @@ export const createdRadioButtonQuestion = async (
       question_radio_answer,
       question_code
     );
-
-    console.log("✅ 問題作成成功:", result);
     res.status(200).json({ message: "✅ 問題作成成功" });
   } catch (error) {
     console.log(error);
@@ -89,7 +85,6 @@ export const createdCheckboxButtonQuestion = async (
   try {
     const question_oprion_json = JSON.stringify(question_option);
     const checkbox_answer_json = JSON.stringify(question_checkbox_answer);
-    console.log(question_oprion_json);
     const result = await createCheckboxQuestion(
       question_category_id,
       question_memo,
@@ -98,8 +93,6 @@ export const createdCheckboxButtonQuestion = async (
       checkbox_answer_json,
       question_code
     );
-
-    console.log("✅ 問題作成成功:", result);
     res.status(200).json({ message: "✅ 問題作成成功" });
   } catch (error) {
     console.log(error);
@@ -147,7 +140,6 @@ export const createdQuestions = async (req: Request, res: Response) => {
         continue;
       } else {
         try {
-          console.log(question);
           const result = await createRadioButtonQuestion(
             question.question_category_id,
             question.question_memo,
@@ -186,7 +178,6 @@ export const createdQuestions = async (req: Request, res: Response) => {
         continue;
       } else {
         try {
-          console.log(question);
           const result = await createCheckboxQuestion(
             question.question_category_id,
             question.question_memo,
@@ -217,7 +208,6 @@ export const deletedQuestion = async (req: Request, res: Response) => {
   const { question_id } = req.body;
   try {
     const result = await deleteQuestion(question_id);
-    console.log("✅ 問題削除成功:", result);
     res.status(200).json({ message: "✅ 問題削除成功" });
   } catch (error) {
     console.log(error);

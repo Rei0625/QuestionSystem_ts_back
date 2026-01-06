@@ -72,7 +72,6 @@ export const createdGuestAnswer = async (req: Request, res: Response) => {
 export const getedAnswer = async (req: Request, res: Response) => {
   try {
     const user_id = req.body.user_id;
-    console.log(user_id);
     const answers = await getAnswer(user_id);
     res.status(200).json({ answers: answers });
   } catch (err) {

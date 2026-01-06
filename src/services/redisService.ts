@@ -25,7 +25,6 @@ export class RedisService {
 
   async questionDataGet(user_id: string) {
     const result = await redis.lpop("questions:" + user_id);
-    console.log(result);
     if (result == null) {
       return result;
     }
@@ -70,41 +69,3 @@ export class RedisService {
     console.log(alldata);
   }
 }
-
-// await redis.set('key', 'value');
-
-// const value = await redis.get('key');
-// console.log(value); // string | null
-
-// const deletedCount = await redis.del('key');
-// console.log(deletedCount);  // 削除されたキー数（0か1）
-
-//   // 1. 左端に要素を追加（LPUSH）
-//   await redis.lpush('tasks', 'task1');
-//   await redis.lpush('tasks', 'task2');
-//   // 今のtasksリスト: ['task2', 'task1']
-
-//   // 2. 右端に要素を追加（RPUSH）
-//   await redis.rpush('tasks', 'task3');
-//   // tasksリスト: ['task2', 'task1', 'task3']
-
-//   // 3. リストの全要素を取得（LRANGE）
-//   const allTasks = await redis.lrange('tasks', 0, -1);
-//   console.log('タスク一覧:', allTasks);
-//   // 出力: ['task2', 'task1', 'task3']
-
-//   // 4. 左端から要素を取り出して削除（LPOP）
-//   const firstTask = await redis.lpop('tasks');
-//   console.log('取り出したタスク:', firstTask);
-//   // 出力: 'task2'
-
-//   // 5. リストの長さを取得（LLEN）
-//   const length = await redis.llen('tasks');
-//   console.log('残りのタスク数:', length);
-//   // 出力: 2
-
-//   // 最後に接続を閉じる
-//   redis.disconnect();
-// }
-
-// redisListExample().catch(console.error);

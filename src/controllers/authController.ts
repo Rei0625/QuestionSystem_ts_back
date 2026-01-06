@@ -35,7 +35,6 @@ export const loginAdminCheck = async (req: Request, res: Response) => {
 };
 
 export const logout = async (req: Request, res: Response) => {
-  console.log("tetete");
   res.cookie("access_token", "", {
     httpOnly: true,
     secure: false,

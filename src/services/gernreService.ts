@@ -35,7 +35,6 @@ export async function getCategory(category_id: string) {
     "SELECT * FROM category_info WHERE category_id = ?",
     [category_id]
   );
-  console.log(rows);
   if (rows.length === 0) {
     return true;
   } else {

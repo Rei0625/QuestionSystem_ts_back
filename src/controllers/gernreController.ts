@@ -55,8 +55,6 @@ export const createdExamgroup = async (req: Request, res: Response) => {
   const { examgroup_name } = req.body;
   try {
     const result = await createExamGroup(examgroup_name);
-
-    console.log("✅ 試験科目作成成功:", result);
     res.status(200).json({ message: "✅ 試験科目作成成功" });
   } catch (error) {
     console.log(error);
@@ -68,8 +66,6 @@ export const createdCatagory = async (req: Request, res: Response) => {
   const { category_name, category_examgroup_id } = req.body;
   try {
     const result = await createCategory(category_name, category_examgroup_id);
-
-    console.log("✅ 試験科目作成成功:", result);
     res.status(200).json({ message: "✅ 試験科目作成成功" });
   } catch (error) {
     console.log(error);
@@ -86,7 +82,6 @@ export const deletedExamgroup = async (req: Request, res: Response) => {
     for (const category of categorys) {
       await deleteQuestions(category.category_id);
     }
-    console.log(result);
     res.status(200).json({ message: "試験科目削除を行いました" });
   } catch (erroe) {
     console.log(erroe);
@@ -99,7 +94,6 @@ export const deletedCategory = async (req: Request, res: Response) => {
   try {
     const result = await deleteCategory(category_id);
     const result2 = await deleteQuestions(category_id);
-    console.log(result);
     res.status(200).json({ message: "カテゴリーを削除しました" });
   } catch (erroe) {
     console.log(erroe);

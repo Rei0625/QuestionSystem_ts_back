@@ -10,7 +10,6 @@ export async function createRadioButtonQuestion(
   question_code: string
 ) {
   const question_id = Date.now().toString();
-  console.log(question_radio_answer);
   const [result] = await sql.query(
     "INSERT INTO Question_info (question_id, question_category_id, question_memo, option_type, question_option, question_radio_answer, question_code, del_flg ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     [
